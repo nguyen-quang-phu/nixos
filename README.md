@@ -1,2 +1,2 @@
 # nixos
-This is a my nixos config
+This is a keynold's nixos config
