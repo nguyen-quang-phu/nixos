@@ -1,29 +1,31 @@
 { config, inputs, pkgs, ... }:
 
 let user = "keynold";
-    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
-{
+  keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
+  {
   imports = [
     ../../modules/shared
-	    ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  networking = {
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    hostName = "nixos"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.useDHCP = false;
-networking.wireless.iwd.enable = true;
-networking.networkmanager.wifi.backend= "iwd";
+    # Enable networking
+    networkmanager.enable = true;
+    useDHCP = false;
+    wireless.iwd.enable = true;
+    networkmanager.wifi.backend= "iwd";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -42,27 +44,42 @@ networking.networkmanager.wifi.backend= "iwd";
     LC_TELEPHONE = "vi_VN";
     LC_TIME = "vi_VN";
   };
+  security.rtkit.enable = true;
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.keynold = {
+    isNormalUser = true;
+    description = "keynold";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      kate
+      #  thunderbird
+    ];
+  };
+services = {
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  displayManager.sddm.enable = true;
+  xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
+  xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  pulseaudio.enable = false;
+  pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
@@ -75,44 +92,17 @@ networking.networkmanager.wifi.backend= "iwd";
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.keynold = {
-    isNormalUser = true;
-    description = "keynold";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kate
-    #  thunderbird
-    ];
-  };
-
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "keynold";
+  displayManager.autoLogin.enable = true;
+  displayManager.autoLogin.user = "keynold";
+};
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-unzip
-stow
-gcc
-yazi
-    nil
-    nixd
-    statix
-    deadnix
-  #  wget
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
