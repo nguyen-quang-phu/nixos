@@ -6,7 +6,6 @@
   ...
 }: let
   user = "keynold";
-  keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p"];
 in {
   imports = [
     ../../modules/shared
@@ -51,32 +50,39 @@ in {
     LC_TIME = "vi_VN";
   };
   security.rtkit.enable = true;
+  users = {
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.keynold = {
-    isNormalUser = true;
-    description = "keynold";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      kate
-      #  thunderbird
-    ];
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    defaultUserShell = pkgs.zsh;
+    users.keynold = {
+      isNormalUser = true;
+      description = "keynold";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+      ];
+      packages = with pkgs; [
+        kate
+        #  thunderbird
+      ];
+      useDefaultShell = true;
+      shell = pkgs.zsh;
+    };
   };
   services = {
-    # Enable the X11 windowing system.
-    xserver.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      desktopManager.plasma5.enable = true;
 
-    # Enable the KDE Plasma Desktop Environment.
-    displayManager.sddm.enable = true;
-    xserver.desktopManager.plasma5.enable = true;
-
-    # Configure keymap in X11
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
+      # Configure keymap in X11
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
     };
 
     # Enable CUPS to print documents.
@@ -96,14 +102,23 @@ in {
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-
-    # Enable automatic login for the user.
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "keynold";
+    displayManager = {
+      # Enable the KDE Plasma Desktop Environment.
+      sddm.enable = true;
+      autoLogin = {
+        # Enable automatic login for the user.
+        enable = true;
+        user = "keynold";
+      };
+    };
   };
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [
+    zsh
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

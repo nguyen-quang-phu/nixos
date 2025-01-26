@@ -3,8 +3,10 @@
 }:
 {
   imports = [
-    ./neovim
+    ./atuin
     ./lazygit
+    ./neovim
     ./ssh
+    ./zsh
   ];
 }
