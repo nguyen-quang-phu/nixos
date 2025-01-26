@@ -28,6 +28,7 @@
   outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs } @inputs:
     let
       user = "keynold";
+	  username = user;
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -105,8 +106,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "backup1";
-              users.${user} = import ./modules/nixos/home-manager.nix;
+              backupFileExtension = "backup";
+              users.${user} = import ./home/nixos;
             };
           }
           ./hosts/nixos
