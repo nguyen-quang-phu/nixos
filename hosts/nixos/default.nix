@@ -1,18 +1,24 @@
-{ config, inputs, pkgs, ... }:
-
-let user = "keynold";
-  keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p" ]; in
-  {
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
+  user = "keynold";
+  keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p"];
+in {
   imports = [
     ../../modules/shared
     ./hardware-configuration.nix
   ];
 
+  environment.variables.EDITOR = "nvim";
+  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking = {
-
     hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -24,7 +30,7 @@ let user = "keynold";
     networkmanager.enable = true;
     useDHCP = false;
     wireless.iwd.enable = true;
-    networkmanager.wifi.backend= "iwd";
+    networkmanager.wifi.backend = "iwd";
   };
 
   # Set your time zone.
@@ -53,53 +59,51 @@ let user = "keynold";
   users.users.keynold = {
     isNormalUser = true;
     description = "keynold";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kate
       #  thunderbird
     ];
   };
-services = {
+  services = {
+    # Enable the X11 windowing system.
+    xserver.enable = true;
 
-  # Enable the X11 windowing system.
-  xserver.enable = true;
+    # Enable the KDE Plasma Desktop Environment.
+    displayManager.sddm.enable = true;
+    xserver.desktopManager.plasma5.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  displayManager.sddm.enable = true;
-  xserver.desktopManager.plasma5.enable = true;
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
 
-  # Configure keymap in X11
-  xserver.xkb = {
-    layout = "us";
-    variant = "";
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+
+    # Enable automatic login for the user.
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "keynold";
   };
-
-  # Enable CUPS to print documents.
-  printing.enable = true;
-
-  # Enable sound with pipewire.
-  pulseaudio.enable = false;
-  pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable automatic login for the user.
-  displayManager.autoLogin.enable = true;
-  displayManager.autoLogin.user = "keynold";
-};
 
   # Install firefox.
   programs.firefox.enable = true;
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
