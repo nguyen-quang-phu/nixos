@@ -104,9 +104,27 @@
         "type": "github"
       }
     },
-    "nix-darwin": {
+    "ibus-bamboo": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1737077323,
+        "narHash": "sha256-BC0mns0XbWaBxL0FWhmQF+M18kwjj9JHhog+a/wsQBU=",
+        "owner": "BambooEngine",
+        "repo": "ibus-bamboo",
+        "rev": "1ee8288509cd89ad255500929c7a19b90e379ef7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BambooEngine",
+        "repo": "ibus-bamboo",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1716329735,
@@ -126,7 +144,7 @@
       "inputs": {
         "brew-src": "brew-src",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1736041957,
@@ -160,6 +178,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1736701207,
+        "narHash": "sha256-jG/+MvjVY7SlTakzZ2fJ5dC3V1PrKKrUEOEE30jrOKA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "ed4a395ea001367c1f13d34b1e01aa10290f67d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1687274257,
         "narHash": "sha256-TutzPriQcZ8FghDhEolnHcYU2oHIG5XWF+/SUBNnAOE=",
         "path": "/nix/store/22qgs3skscd9bmrxv9xv4q5d4wwm5ppx-source",
@@ -171,7 +205,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1716330097,
         "narHash": "sha256-8BO3B7e3BiyIDsaKA0tY8O88rClYRTjvAp66y+VBUeU=",
@@ -187,7 +221,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1737469691,
         "narHash": "sha256-nmKOgAU48S41dTPIXAq0AHZSehWUn6ZPrUKijHAMmIk=",
@@ -210,8 +244,9 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "ibus-bamboo": "ibus-bamboo",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       }
     }
   },

@@ -1,11 +1,13 @@
 {
   config,
   inputs,
+  system,
   pkgs,
   lib,
   ...
 }: let
   user = "keynold";
+  bamboo = inputs.ibus-bamboo.packages."${system}".default;
 in {
   imports = [
     ../../modules/shared
@@ -14,9 +16,11 @@ in {
 
   environment.variables.EDITOR = "nvim";
   fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    # Bootloader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
   networking = {
     hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,20 +38,35 @@ in {
 
   # Set your time zone.
   time.timeZone = "Asia/Ho_Chi_Minh";
+  i18n = {
+    # Select internationalisation properties.
+    defaultLocale = "en_US.UTF-8";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "vi_VN";
+      LC_IDENTIFICATION = "vi_VN";
+      LC_MEASUREMENT = "vi_VN";
+      LC_MONETARY = "vi_VN";
+      LC_NAME = "vi_VN";
+      LC_NUMERIC = "vi_VN";
+      LC_PAPER = "vi_VN";
+      LC_TELEPHONE = "vi_VN";
+      LC_TIME = "vi_VN";
+    };
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "vi_VN";
-    LC_IDENTIFICATION = "vi_VN";
-    LC_MEASUREMENT = "vi_VN";
-    LC_MONETARY = "vi_VN";
-    LC_NAME = "vi_VN";
-    LC_NUMERIC = "vi_VN";
-    LC_PAPER = "vi_VN";
-    LC_TELEPHONE = "vi_VN";
-    LC_TIME = "vi_VN";
+    inputMethod = {
+      enabled = "ibus";
+      ibus.engines = [
+        bamboo
+      ];
+    };
+    # inputMethod = {
+    #   enable = true;
+    #   type = "ibus";
+    #   ibus.engines = with pkgs.ibus-engines; [
+    #     bamboo
+    #   ];
+    # };
   };
   security.rtkit.enable = true;
   users = {
@@ -112,10 +131,11 @@ in {
       };
     };
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
+  programs = {
+    # Install firefox.
+    firefox.enable = true;
+    zsh.enable = true;
+  };
   environment.shells = with pkgs; [
     zsh
   ];
