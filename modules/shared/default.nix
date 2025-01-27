@@ -38,7 +38,6 @@ in {
     nixd
     statix
     deadnix
-    ghostty
     just
     gnumake
     ripgrep

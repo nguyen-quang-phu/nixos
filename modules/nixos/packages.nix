@@ -10,8 +10,6 @@ shared-packages ++ [
   home-manager
 
   # Media and design tools
-  direnv
-  google-chrome
   zathura
   vim
   spotify

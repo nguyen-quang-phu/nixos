@@ -1,6 +1,6 @@
 {...}: {
   programs = {
-    atuin = {
+    direnv = {
       enable = true;
 
       enableBashIntegration = true;
@@ -8,8 +8,9 @@
       enableNushellIntegration = true;
       enableZshIntegration = true;
 
-      flags = [];
-      settings = {};
+      nix-direnv = {
+        enable = true;
+      };
     };
   };
 }

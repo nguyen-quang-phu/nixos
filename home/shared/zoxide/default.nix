@@ -1,6 +1,6 @@
 {...}: {
   programs = {
-    atuin = {
+    zoxide = {
       enable = true;
 
       enableBashIntegration = true;
@@ -8,8 +8,7 @@
       enableNushellIntegration = true;
       enableZshIntegration = true;
 
-      flags = [];
-      settings = {};
+      options = [];
     };
   };
 }
