@@ -26,6 +26,7 @@
     ibus-bamboo = {
       url = "github:BambooEngine/ibus-bamboo";
     };
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -38,6 +39,7 @@
     home-manager,
     nixpkgs,
     ibus-bamboo,
+    agenix,
   } @ inputs: let
     user = "keynold";
     username = user;
@@ -51,7 +53,7 @@
         mkShell {
           nativeBuildInputs = with pkgs; [bashInteractive git];
           shellHook = with pkgs; ''
-            export EDITOR=vim
+            export EDITOR=nvim
           '';
         };
     };
@@ -128,6 +130,7 @@
               users.${user} = import ./home/nixos;
             };
           }
+          agenix.nixosModules.default
           ./hosts/nixos
         ];
       });

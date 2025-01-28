@@ -5,6 +5,9 @@
     enableCompletion = true;
     oh-my-zsh.enable = true;
     syntaxHighlighting.enable = true;
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     initExtra = "
     ";
     envExtra = "

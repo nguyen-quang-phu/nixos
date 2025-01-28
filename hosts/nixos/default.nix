@@ -12,6 +12,7 @@ in {
   imports = [
     ../../modules/shared
     ./hardware-configuration.nix
+    ./secrects.nix
   ];
 
   environment.variables.EDITOR = "nvim";
@@ -55,18 +56,12 @@ in {
     };
 
     inputMethod = {
-      enabled = "ibus";
+      enable = true;
+      type = "ibus";
       ibus.engines = [
         bamboo
       ];
     };
-    # inputMethod = {
-    #   enable = true;
-    #   type = "ibus";
-    #   ibus.engines = with pkgs.ibus-engines; [
-    #     bamboo
-    #   ];
-    # };
   };
   security.rtkit.enable = true;
   users = {
@@ -154,7 +149,7 @@ in {
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

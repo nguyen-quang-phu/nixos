@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  inputs,
+  system,
   ...
 }: let
   user = "keynold";
@@ -45,6 +47,6 @@ in {
     devenv
     alejandra
     xclip
-    #  wget
+    inputs.agenix.packages."${system}".default
   ];
 }
