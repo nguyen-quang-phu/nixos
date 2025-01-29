@@ -16,6 +16,12 @@
           identitiesOnly = true;
           identityFile = osConfig.age.secrets.github-nqp.path;
         };
+        gitlab-nqp = {
+          host = "gitlab.com-nqp";
+          hostname = "gitlab.com";
+          identitiesOnly = true;
+          identityFile = osConfig.age.secrets.gitlab-nqp.path;
+        };
       };
     };
   };

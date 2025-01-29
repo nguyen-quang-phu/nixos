@@ -33,6 +33,8 @@
       "darwin-update" = "just -f ~/.config/nix-darwin/justfile update";
       "ze" = "zellij";
       "zed" = "ze a -c default";
+      "pbcopy" = "xclip -selection clipboard";
+      "pbpaste" = "xclip -selection clipboard -o";
     };
   };
   # Let Home Manager install and manage itself.

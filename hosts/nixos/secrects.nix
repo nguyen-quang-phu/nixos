@@ -7,6 +7,11 @@
         owner = "keynold";
         mode = "0400";
       };
+      gitlab-nqp = {
+        file = ../../secrets/gitlab-nqp.age;
+        owner = "keynold";
+        mode = "0400";
+      };
     };
   };
 }

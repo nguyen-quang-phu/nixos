@@ -6,4 +6,5 @@ let
   systems = [system1];
 in {
   "github-nqp.age".publicKeys = [keynold];
+  "gitlab-nqp.age".publicKeys = [keynold];
 }
