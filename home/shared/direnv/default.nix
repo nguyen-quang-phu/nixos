@@ -11,6 +11,9 @@
       nix-direnv = {
         enable = true;
       };
+      mise = {
+        enable = true;
+      };
     };
   };
 }

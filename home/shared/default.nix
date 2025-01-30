@@ -4,14 +4,22 @@
 {
   imports = [
     ./atuin
+    ./awscli
+    ./bat
+    ./bottom
+    ./chromium
+    ./direnv
+    ./eza
+    ./fastfetch
     ./ghostty
     ./lazygit
     ./neovim
     ./ssh
     ./zoxide
     ./zsh
-    ./bottom
-    ./chromium
-    ./awscli
+    ./mise
+    ./fd
+    ./freetube
+    ./fzf
   ];
 }
