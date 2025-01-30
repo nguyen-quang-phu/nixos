@@ -1,6 +1,6 @@
 {...}: {
   programs = {
-    fzf = {
+    rbenv = {
       enable = true;
 
       enableBashIntegration = true;

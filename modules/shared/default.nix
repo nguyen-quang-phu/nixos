@@ -33,11 +33,15 @@ in {
 
   environment.systemPackages = with pkgs;
     [
+      (lutris.override {
+        extraLibraries = pkgs: [
+          # List library dependencies here
+        ];
+      })
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       unzip
       gzip
       stow
-      yazi
       just
       gnumake
       nodejs

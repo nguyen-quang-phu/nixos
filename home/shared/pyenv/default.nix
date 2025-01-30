@@ -1,6 +1,6 @@
 {...}: {
   programs = {
-    fzf = {
+    pyenv = {
       enable = true;
 
       enableBashIntegration = true;

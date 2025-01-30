@@ -1,6 +1,6 @@
 {...}: {
   programs = {
-    fzf = {
+    navi = {
       enable = true;
 
       enableBashIntegration = true;

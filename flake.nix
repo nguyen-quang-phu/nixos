@@ -27,6 +27,7 @@
       url = "github:BambooEngine/ibus-bamboo";
     };
     agenix.url = "github:ryantm/agenix";
+    # hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {

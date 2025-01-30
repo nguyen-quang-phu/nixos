@@ -1,0 +1,7 @@
+{...}: {
+  programs = {
+    sqls = {
+      enable = true;
+    };
+  };
+}

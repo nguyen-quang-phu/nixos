@@ -11,15 +11,38 @@
     ./direnv
     ./eza
     ./fastfetch
-    ./ghostty
-    ./lazygit
-    ./neovim
-    ./ssh
-    ./zoxide
-    ./zsh
-    ./mise
     ./fd
     ./freetube
     ./fzf
+    ./ghostty
+    ./git
+    ./github
+    ./go
+    ./java
+    ./jq
+    ./jujutsu
+    ./lazygit
+    ./mise
+    ./navi
+    ./neovim
+    ./nix-index
+    ./noti
+    ./pet
+    ./poetry
+    ./pyenv
+    ./rbenv
+    ./ripgrep
+    ./ruff
+    ./sqls
+    ./ssh
+    ./starship
+    ./taskwarrior
+    ./tealdeer
+    ./thefuck
+    ./vscode
+    ./yazi
+    ./zellij
+    ./zoxide
+    ./zsh
   ];
 }

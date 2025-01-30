@@ -8,7 +8,6 @@ with pkgs; [
   nixd
   alejandra
   statix
-  ripgrep
   # typo
   typos-lsp
   # lua
