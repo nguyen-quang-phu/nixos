@@ -2,7 +2,7 @@
   programs.ghostty = {
     enable = true;
     enableBashIntegration = true;
-    clearDefaultKeybinds = true;
+    # clearDefaultKeybinds = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
     installBatSyntax = true;

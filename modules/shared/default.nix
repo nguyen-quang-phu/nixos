@@ -6,6 +6,7 @@
   ...
 }: let
   user = "keynold";
+  nvim-pacckages = import ../shared/nvim-packages.nix {inherit pkgs;};
 in {
   nix = {
     nixPath = ["nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos"];
@@ -30,23 +31,20 @@ in {
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    unzip
-    stow
-    gcc
-    yazi
-    nil
-    nixd
-    statix
-    deadnix
-    just
-    gnumake
-    ripgrep
-    nodejs
-    devenv
-    alejandra
-    xclip
-    inputs.agenix.packages."${system}".default
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      unzip
+      gzip
+      stow
+      yazi
+      just
+      gnumake
+      nodejs
+      devenv
+      xclip
+      nix-prefetch-scripts
+      inputs.agenix.packages."${system}".default
+    ]
+    ++ nvim-pacckages;
 }

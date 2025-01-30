@@ -130,6 +130,7 @@ in {
     # Install firefox.
     firefox.enable = true;
     zsh.enable = true;
+    nix-ld.enable = true;
   };
   environment.shells = with pkgs; [
     zsh

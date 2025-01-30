@@ -12,5 +12,6 @@
     ./zsh
     ./bottom
     ./chromium
+    ./awscli
   ];
 }
