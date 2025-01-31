@@ -39,11 +39,9 @@
     homebrew-cask,
     home-manager,
     nixpkgs,
-    ibus-bamboo,
     agenix,
   } @ inputs: let
     user = "keynold";
-    username = user;
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
     forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
