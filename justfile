@@ -10,6 +10,6 @@ update:
   @just build
 nixos-build:
   @just git-add
-  nix run .#build-switch
+  sudo nixos-rebuild switch --impure --flake .#x86_64-linux
 update-home-manager:
   nix flake update home-manager

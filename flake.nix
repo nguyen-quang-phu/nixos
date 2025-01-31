@@ -39,9 +39,11 @@
     homebrew-cask,
     home-manager,
     nixpkgs,
+    ibus-bamboo,
     agenix,
   } @ inputs: let
     user = "keynold";
+    aagl-gtk-on-nix = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
     forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -130,6 +132,7 @@
             };
           }
           agenix.nixosModules.default
+          aagl-gtk-on-nix.module
           ./hosts/nixos
         ];
       });
