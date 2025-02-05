@@ -14,4 +14,6 @@ with pkgs; [
   luajitPackages.luacheck
   lua-language-server
   codeium
+  # json
+  nodePackages.vscode-json-languageserver
 ]

@@ -13,6 +13,7 @@ in {
     ../../modules/shared
     ./hardware-configuration.nix
     ./secrects.nix
+    ./kanata.nix
   ];
 
   environment.variables.EDITOR = "nvim";
