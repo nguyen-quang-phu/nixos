@@ -41,6 +41,7 @@
     nixpkgs,
     ibus-bamboo,
     agenix,
+    ...
   } @ inputs: let
     user = "keynold";
     aagl-gtk-on-nix = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");

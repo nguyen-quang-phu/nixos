@@ -14,6 +14,7 @@ in {
     ./hardware-configuration.nix
     ./secrects.nix
     ./kanata.nix
+    ./hyrpland.nix
   ];
 
   environment.variables.EDITOR = "nvim";
@@ -91,7 +92,12 @@ in {
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
-      desktopManager.plasma5.enable = true;
+      desktopManager = {
+        plasma6 = {
+          enable = true;
+          enableQt5Integration = true;
+        };
+      };
 
       # Configure keymap in X11
       xkb = {
@@ -105,21 +111,11 @@ in {
 
     # Enable sound with pipewire.
     pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
     displayManager = {
+      defaultSession = "plasma";
       # Enable the KDE Plasma Desktop Environment.
       sddm.enable = true;
+      sddm.wayland.enable = true;
       autoLogin = {
         # Enable automatic login for the user.
         enable = true;
