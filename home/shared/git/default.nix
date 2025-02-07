@@ -17,6 +17,15 @@ in {
             };
           };
         }
+        {
+          condition = "gitdir:~/Code/";
+          contents = {
+            user = {
+              email = useremail;
+              name = username;
+            };
+          };
+        }
       ];
 
       extraConfig = {

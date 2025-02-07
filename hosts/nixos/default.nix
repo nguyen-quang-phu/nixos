@@ -14,7 +14,7 @@ in {
     ./hardware-configuration.nix
     ./secrects.nix
     ./kanata.nix
-    ./hyrpland.nix
+    # ./hyrpland.nix
   ];
 
   environment.variables.EDITOR = "nvim";

@@ -6,6 +6,7 @@
   # import sub modules
   imports = [
     ../shared
+    ./hyprland
   ];
 
   # Home Manager needs a bit of information about you and the
