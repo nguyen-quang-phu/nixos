@@ -7,6 +7,7 @@
 }: let
   user = "keynold";
   nvim-pacckages = import ../shared/nvim-packages.nix {inherit pkgs;};
+  hyprland-pacckages = import ../shared/hyprland-packages.nix {inherit pkgs;};
 in {
   nix = {
     nixPath = ["nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos"];
@@ -75,6 +76,11 @@ in {
       xclip
       nix-prefetch-scripts
       inputs.agenix.packages."${system}".default
+      killport
+      inputs.zen-browser.packages."${system}".default
+      evtest
+      brightnessctl
     ]
-    ++ nvim-pacckages;
+    ++ nvim-pacckages
+    ++ hyprland-pacckages;
 }

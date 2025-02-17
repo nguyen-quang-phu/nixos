@@ -38,11 +38,13 @@
     ./starship
     ./taskwarrior
     ./tealdeer
+    ./texlive
     ./thefuck
     ./vscode
     ./yazi
     ./zellij
     ./zoxide
     ./zsh
+    ./zathura
   ];
 }

@@ -1,13 +1,14 @@
-{ config, pkgs, ... }:
-
-let
-  user = "keynold";
-  xdg_configHome  = "/home/${user}/.config";
-in
 {
-imports =[
-../shared/home-manager.nix
-];
+  config,
+  pkgs,
+  ...
+}: let
+  user = "keynold";
+  xdg_configHome = "/home/${user}/.config";
+in {
+  imports = [
+    ../shared/home-manager.nix
+  ];
   home = {
     enableNixpkgsReleaseCheck = false;
     username = "${user}";

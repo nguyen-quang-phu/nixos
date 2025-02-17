@@ -16,4 +16,12 @@ with pkgs; [
   codeium
   # json
   nodePackages.vscode-json-languageserver
+  # latex
+  texliveFull
+  texlab
+  # all
+  ctags-lsp
+  # go
+  golangci-lint-langserver
+  delve
 ]

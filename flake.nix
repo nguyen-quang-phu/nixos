@@ -27,6 +27,7 @@
       url = "github:BambooEngine/ibus-bamboo";
     };
     agenix.url = "github:ryantm/agenix";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
     # hyprland.url = "github:hyprwm/Hyprland";
   };
 
