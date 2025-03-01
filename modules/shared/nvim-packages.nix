@@ -18,7 +18,7 @@ with pkgs; [
   # json
   nodePackages.vscode-json-languageserver
   # yaml
-  nodePackages.yaml-language-server
+  yaml-language-server
   # latex
   texliveFull
   texlab
@@ -31,9 +31,12 @@ with pkgs; [
   markdownlint-cli2
   markdown-oxide
   # proto
-
   protobuf
   buf
   protols
   clang-tools
+  # js/ts
+  angular-language-server
+  vue-language-server
+  svelte-language-server
 ]

@@ -92,7 +92,6 @@ in {
       pass
       obsidian
       imagemagick
-
     ]
     ++ nvim-pacckages
     ++ hyprland-pacckages;
