@@ -1,11 +1,11 @@
-{...}: {
+{pkgs,...}: {
   programs = {
     lazygit = {
       enable = true;
       settings = {
         os = {
           editPreset = "nvim-remote";
-          openLink = "open \"$(echo \"{{link}}\" | sed 's/%2F/\\//g')\"";
+          openLink = if pkgs.stdenv.hostPlatform.isDarwin then "open \"$(echo \"{{link}}\" | sed 's/%2F/\\//g')\"" else "xdg-open \"$(echo \"{{link}}\" | sed 's/%2F/\\//g')\"" ;
         };
         customCommands = [
           {

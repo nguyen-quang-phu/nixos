@@ -10,7 +10,13 @@
   hyprland-pacckages = import ../shared/hyprland-packages.nix {inherit pkgs;};
 in {
   nix = {
-    nixPath = ["nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos"];
+    nixPath = [
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixos-config=/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+    # settings.nix-path = ["nixpkgs=${pkgs.path}"];
+    # nixPath = ["nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos"];
     settings = {
       allowed-users = ["${user}"];
       trusted-users = ["@admin" "${user}"];
@@ -80,6 +86,13 @@ in {
       inputs.zen-browser.packages."${system}".default
       evtest
       brightnessctl
+      gobang
+      xdg-utils
+      mutt-wizard
+      pass
+      obsidian
+      imagemagick
+
     ]
     ++ nvim-pacckages
     ++ hyprland-pacckages;

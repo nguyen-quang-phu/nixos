@@ -18,6 +18,15 @@ in {
           };
         }
         {
+          condition = "gitdir:~/vaults/";
+          contents = {
+            user = {
+              email = useremail;
+              name = username;
+            };
+          };
+        }
+        {
           condition = "gitdir:~/Code/";
           contents = {
             user = {
@@ -119,15 +128,7 @@ in {
         "Thumbs.db"
         ".devenv"
         ".direnv"
-        ".lazy.lua"
-        ".envrc"
-        "devenv.yaml"
-        "devenv.nix"
-        "justfile"
         "vendor"
-        ".ignore"
-        "Gemfile.local"
-        "Gemfile.local.lock"
         "bin"
       ];
     };

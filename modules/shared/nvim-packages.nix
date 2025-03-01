@@ -1,7 +1,8 @@
-{pkgs}:
+{pkgs, ...}:
 with pkgs; [
   # c/c++
   gcc
+  pandoc
   # nix
   deadnix
   nil
@@ -16,6 +17,8 @@ with pkgs; [
   codeium
   # json
   nodePackages.vscode-json-languageserver
+  # yaml
+  nodePackages.yaml-language-server
   # latex
   texliveFull
   texlab
@@ -24,4 +27,13 @@ with pkgs; [
   # go
   golangci-lint-langserver
   delve
+  marksman
+  markdownlint-cli2
+  markdown-oxide
+  # proto
+
+  protobuf
+  buf
+  protols
+  clang-tools
 ]

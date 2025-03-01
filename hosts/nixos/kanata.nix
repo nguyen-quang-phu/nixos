@@ -40,6 +40,7 @@
           "/dev/input/by-path/pci-0000:00:14.0-usb-0:2:1.0-event-kbd"
           "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:1:1.2-event-kbd"
           "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:2:1.0-event-kbd"
+          "/dev/input/by-id/usb-Genius_Wireless_Device-if02-event-kbd"
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''

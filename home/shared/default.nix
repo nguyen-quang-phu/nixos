@@ -4,6 +4,7 @@
 {
   imports = [
     ./atuin
+    ./neomutt
     ./awscli
     ./bat
     ./bottom
@@ -33,6 +34,7 @@
     ./rbenv
     ./ripgrep
     ./ruff
+    ./spotify-player
     ./sqls
     ./ssh
     ./starship
@@ -42,9 +44,10 @@
     ./thefuck
     ./vscode
     ./yazi
+    ./zathura
     ./zellij
     ./zoxide
     ./zsh
-    ./zathura
+    ./rofi
   ];
 }
