@@ -92,6 +92,7 @@ in {
       pass
       obsidian
       imagemagick
+      unrar
     ]
     ++ nvim-pacckages
     ++ hyprland-pacckages;

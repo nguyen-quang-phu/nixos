@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
+    ags.url = "github:aylur/ags";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +41,7 @@
     homebrew-cask,
     home-manager,
     nixpkgs,
+    ags,
     ibus-bamboo,
     agenix,
     ...
@@ -122,7 +124,7 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
         # specialArgs = inputs;
-        specialArgs = {inherit inputs system;};
+        specialArgs = {inherit inputs ags system;};
         modules = [
           home-manager.nixosModules.home-manager
           {

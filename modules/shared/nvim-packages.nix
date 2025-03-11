@@ -39,4 +39,13 @@ with pkgs; [
   angular-language-server
   vue-language-server
   svelte-language-server
+  #docker
+  docker-compose-language-service
+  docker-ls
+  dockerfile-language-server-nodejs
+  hadolint
+  #graphql
+  # nodePackages.graphql-language-service-cli
+  #sql
+  sqlfluff
 ]
